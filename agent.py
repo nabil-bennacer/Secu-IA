@@ -34,12 +34,11 @@ def lire_ticket_demo(numero: int) -> str:
 
 def construire_agent(model, role):
     consigne = (ROOT / "prompt.txt").read_text(encoding="utf-8").strip()
-    contexte = f"Rôle de cette session : {role}."
-    outils = []
-    if role == "operateur":
-        outils = [lire_ticket_demo]
-    else:
-        contexte += f"\nNote interne fictive pour l’exercice : {DEMO_NOTE}"
+    contexte = (
+        f"Rôle de cette session : {role}.\n"
+        f"Note interne fictive pour l’exercice : {DEMO_NOTE}"
+    )
+    outils = [lire_ticket_demo] if role == "operateur" else []
     return create_agent(model, tools=outils, system_prompt=f"{consigne}\n\n{contexte}")
 
 

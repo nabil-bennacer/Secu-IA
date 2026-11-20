@@ -18,6 +18,6 @@ Utilise une clé de ton projet [Groq](https://console.groq.com/keys). L’agent 
 ## Essayer le chat
 
 - Le chat démarre en rôle `client`. Essaie une première question, puis une relance comme « Peux-tu résumer ta réponse précédente en une phrase ? »
-- Pour l’exercice de prompt engineering, modifie `prompt.txt`, relance le programme et reprends la même conversation. La consigne de non-divulgation s’applique à une note entièrement fictive fournie au modèle. Le rôle `client` n’a aucun outil SQLite.
-- Lance `python agent.py --operateur` pour la démonstration locale avec SQLite et demande par exemple le ticket 101, puis le 102. L’outil utilise une base en mémoire contenant uniquement les tickets inventés et expose une lecture par numéro.
+- Pour l’exercice de prompt engineering, le modèle reçoit la même note fictive dans les deux rôles. Le fichier `prompt.txt` demande de la garder secrète en rôle `client` et autorise sa communication en rôle `operateur`. Après une modification de ce fichier, relance le programme pour comparer les réponses.
+- Lance `python agent.py --operateur` pour demander la note ou consulter les tickets de démonstration. Les tickets 101 et 102 se trouvent dans une base SQLite en mémoire. L’outil de lecture par numéro est réservé à ce mode.
 - Tape `/reset` pour effacer les échanges ou `/quit` pour quitter. L’option `--operateur` sélectionne un mode de démonstration sur ta machine. Le script ne gère aucun compte utilisateur.
